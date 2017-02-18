@@ -298,9 +298,10 @@ assign GPIO[18]		= 1'bZ;
 
 	);
 	
-	wire			[1: 0]	foo;
 	X_Axis_Subsystem x_axis_subsystem (
-		.motor_ctrl_signal (foo),
+	   .clk_50            (CLOCK_50),
+		.reset             (1'b0),
+		.motor_ctrl_signal (GPIO[0]),
 		.feedback_clk      (1'b1)
 	);
  endmodule
