@@ -126,6 +126,15 @@ module RasterLaserProjector (
     *                           Parameter Declarations                          *
     *****************************************************************************/
 
+   // what GPIO pin the x-axis opto is on
+   localparam X_AXIS_STB_PIN = 0; // TODO: IPB
+
+   // image size
+   localparam NUM_ROWS = 240;
+   localparam NUM_COLS = 320;
+
+   // time to reset y axis from bottom to top in eqivilent number of rows
+   localparam Y_AXIS_RESET_TIME = 25;
 
    /*****************************************************************************
     *                             Port Declarations                             *
@@ -255,15 +264,45 @@ module RasterLaserProjector (
     *                 Internal Wires and Registers Declarations                 *
     *****************************************************************************/
    // Internal Wires
+   wire                                                 reset;
+   assign reset = ~KEY[0];
+
+   // give convenient name to the x-axis opto
+   wire                                                 x_axis_stb;
+   assign x_axis_stb = GPIO[X_AXIS_STB_PIN];
 
    // Internal Registers
 
    // State Machine Registers
+   reg [2:0]                                            y_axis_state;
+   localparam y_axis_state_reset = 0, y_axis_state_display=1, y_axis_state_return=2;
+
+   // what row we are displaying, [0, 239]
+   reg [8:0]                                            y_axis_line;
 
    /*****************************************************************************
     *                         Finite State Machine(s)                           *
     *****************************************************************************/
 
+   always @(posedge x_axis_stb) begin
+      y_axis_line <= y_axis_line + 1; // increment unless reset
+
+      if (reset || y_axis_state == y_axis_state_reset) begin
+         y_axis_state <= y_axis_state_display;
+
+         y_axis_line <= 0;
+      end
+      else if (y_axis_state == y_axis_state_display) begin
+         if (y_axis_line == (NUM_ROWS - 1)) begin
+            y_axis_state <= y_axis_state_return;
+         end
+      end
+      else if (y_axis_state == y_axis_state_return) begin
+         if (y_axis_line == (NUM_ROWS + Y_AXIS_RESET_TIME)) begin
+            y_axis_state <= y_axis_state_reset;
+         end
+      end
+   end
 
    /*****************************************************************************
     *                             Sequential Logic                              *
@@ -283,6 +322,7 @@ module RasterLaserProjector (
    /*****************************************************************************
     *                              Internal Modules                             *
     *****************************************************************************/
+
    Raster_Laser_Projector qsys (
                                 .clk_50mhz_in_clk                   (CLOCK_50),  // clk_50mhz_in.clk
                                 .reset_reset_n                      (1'b0),      // reset.reset_n
@@ -297,12 +337,5 @@ module RasterLaserProjector (
                                 .video_in_overflow_flag					()
 
                                 );
-
-   X_Axis_Subsystem x_axis_subsystem (
-                                      .clk_50            (CLOCK_50),
-                                      .reset             (1'b0),
-                                      .motor_ctrl_signal (GPIO[0]),
-                                      .feedback_clk      (1'b1)
-                                      );
 endmodule
 
