@@ -4,16 +4,18 @@
 
 `timescale 1 ps / 1 ps
 module Raster_Laser_Projector (
-		input  wire       clk_50mhz_in_clk,       // clk_50mhz_in.clk
-		output wire       pixel_clk_clk,          //    pixel_clk.clk
-		input  wire       reset_reset_n,          //        reset.reset_n
-		input  wire       video_in_TD_CLK27,      //     video_in.TD_CLK27
-		input  wire [7:0] video_in_TD_DATA,       //             .TD_DATA
-		input  wire       video_in_TD_HS,         //             .TD_HS
-		input  wire       video_in_TD_VS,         //             .TD_VS
-		input  wire       video_in_clk27_reset,   //             .clk27_reset
-		output wire       video_in_TD_RESET,      //             .TD_RESET
-		output wire       video_in_overflow_flag  //             .overflow_flag
+		output wire       clk_100mhz_clk,         //       clk_100mhz.clk
+		input  wire       clk_50mhz_in_clk,       //     clk_50mhz_in.clk
+		output wire       pixel_clk_clk,          //        pixel_clk.clk
+		output wire       polygon_ctrl_clk_clk,   // polygon_ctrl_clk.clk
+		input  wire       reset_reset_n,          //            reset.reset_n
+		input  wire       video_in_TD_CLK27,      //         video_in.TD_CLK27
+		input  wire [7:0] video_in_TD_DATA,       //                 .TD_DATA
+		input  wire       video_in_TD_HS,         //                 .TD_HS
+		input  wire       video_in_TD_VS,         //                 .TD_VS
+		input  wire       video_in_clk27_reset,   //                 .clk27_reset
+		output wire       video_in_TD_RESET,      //                 .TD_RESET
+		output wire       video_in_overflow_flag  //                 .overflow_flag
 	);
 
 	wire         video_in_video_in_dma_waitrequest;           // mm_interconnect_0:Video_In_video_in_dma_waitrequest -> Video_In:video_in_dma_waitrequest
@@ -36,9 +38,9 @@ module Raster_Laser_Projector (
 		.address            (),                               //                      .address
 		.readdata           (),                               //                      .readdata
 		.writedata          (),                               //                      .writedata
-		.c0                 (),                               //                    c0.clk
-		.c1                 (),                               //                    c1.clk
-		.c2                 (pixel_clk_clk),                  //                    c2.clk
+		.c0                 (clk_100mhz_clk),                 //                    c0.clk
+		.c1                 (pixel_clk_clk),                  //                    c1.clk
+		.c2                 (polygon_ctrl_clk_clk),           //                    c2.clk
 		.areset             (),                               //        areset_conduit.export
 		.locked             (),                               //        locked_conduit.export
 		.scandone           (),                               //           (terminated)
