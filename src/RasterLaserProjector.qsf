@@ -596,8 +596,4 @@ set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
 set_global_assignment -name VERILOG_FILE RasterLaserProjector.v
 set_global_assignment -name QIP_FILE Raster_Laser_Projector/synthesis/Raster_Laser_Projector.qip
-set_global_assignment -name VHDL_FILE X_Axis_Subsystem/X_Axis_Subsystem.vhd
-set_global_assignment -name VHDL_FILE X_Axis_Subsystem/Phase_Frequency_Detector.vhd -hdl_version VHDL_2008
-set_global_assignment -name QIP_FILE X_Axis_Subsystem/PLL/PLL.qip
-set_global_assignment -name QIP_FILE X_Axis_Subsystem/PLL/PLL_RECONFIG.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
