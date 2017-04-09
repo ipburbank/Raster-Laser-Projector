@@ -126,9 +126,6 @@ module RasterLaserProjector (
     *                           Parameter Declarations                          *
     *****************************************************************************/
 
-   // what GPIO pin the x-axis opto is on
-   localparam X_AXIS_STB_PIN = 0; // TODO: IPB
-
    // image size
    localparam NUM_ROWS = 240;
    localparam NUM_COLS = 320;
@@ -260,16 +257,35 @@ module RasterLaserProjector (
    output [ 7: 0]                                       VGA_G;
    output [ 7: 0]                                       VGA_B;
 
-   /*****************************************************************************
-    *                 Internal Wires and Registers Declarations                 *
-    *****************************************************************************/
-   // Internal Wires
+   // ------------- EXTERNAL CONNECTIONS -------------
+   // 3.3V, 5V, and GND from the extension header are also used by the solder boards
+
    wire                                                 reset;
    assign reset = ~KEY[0];
 
+   // x-axis
+   wire                                                 x_axis_ctrl_clk;
+   assign GPIO[13] = x_axis_ctrl_clk;
    // give convenient name to the x-axis opto
    wire                                                 x_axis_stb;
-   assign x_axis_stb = GPIO[X_AXIS_STB_PIN];
+   assign x_axis_stb = GPIO[8];
+
+   // DAC connections
+   // what row we are displaying, [0, NUM_ROWS - 1]
+   reg [7:0]                                            y_axis_position;
+   assign GPIO[7:0] = y_axis_position;
+   reg                                                  y_axis_wr;
+   assign GPIO[9] = y_axis_wr;
+
+   // laser output
+   reg [1:0]                                           laser_intensity;
+   assign GPIO[11:10] = laser_intensity;
+
+   /*****************************************************************************
+    *                 Internal Wires and Registers Declarations                 *
+    *****************************************************************************/
+
+   // Internal Wires
 
    // Internal Registers
 
@@ -277,33 +293,30 @@ module RasterLaserProjector (
    reg [2:0]                                            y_axis_state;
    localparam y_axis_state_reset = 0, y_axis_state_display=1, y_axis_state_return=2;
 
-   // what row we are displaying, [0, NUM_ROWS - 1]
-   reg [8:0]                                            y_axis_line;
-
    /*****************************************************************************
     *                         Finite State Machine(s)                           *
     *****************************************************************************/
 
    always @(posedge x_axis_stb) begin
-      y_axis_line <= y_axis_line + 1; // increment unless reset
+      y_axis_position <= y_axis_position + 1; // increment unless reset
 
       if (reset) begin
          // go to the return state to give the mirror time to reset too
-         y_axis_line <= NUM_ROWS;
          y_axis_state <= y_axis_state_return;
+         y_axis_position <= NUM_ROWS;
       end
       else if (y_axis_state == y_axis_state_reset) begin
          y_axis_state <= y_axis_state_display;
 
-         y_axis_line <= 0;
+         y_axis_position <= 0;
       end
       else if (y_axis_state == y_axis_state_display) begin
-         if (y_axis_line == (NUM_ROWS - 1)) begin
+         if (y_axis_position == (NUM_ROWS - 1)) begin
             y_axis_state <= y_axis_state_return;
          end
       end
       else if (y_axis_state == y_axis_state_return) begin
-         if (y_axis_line == (NUM_ROWS + Y_AXIS_RESET_TIME)) begin
+         if (y_axis_position == (NUM_ROWS + Y_AXIS_RESET_TIME)) begin
             y_axis_state <= y_axis_state_reset;
          end
       end
