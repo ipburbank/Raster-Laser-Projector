@@ -277,7 +277,7 @@ module RasterLaserProjector (
    reg [2:0]                                            y_axis_state;
    localparam y_axis_state_reset = 0, y_axis_state_display=1, y_axis_state_return=2;
 
-   // what row we are displaying, [0, 239]
+   // what row we are displaying, [0, NUM_ROWS - 1]
    reg [8:0]                                            y_axis_line;
 
    /*****************************************************************************
@@ -287,7 +287,12 @@ module RasterLaserProjector (
    always @(posedge x_axis_stb) begin
       y_axis_line <= y_axis_line + 1; // increment unless reset
 
-      if (reset || y_axis_state == y_axis_state_reset) begin
+      if (reset) begin
+         // go to the return state to give the mirror time to reset too
+         state <= y_axis_state_return;
+         y_axis_line <= NUM_ROWS;
+      end
+      else if (y_axis_state == y_axis_state_reset) begin
          y_axis_state <= y_axis_state_display;
 
          y_axis_line <= 0;
