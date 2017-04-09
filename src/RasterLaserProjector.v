@@ -289,8 +289,8 @@ module RasterLaserProjector (
 
       if (reset) begin
          // go to the return state to give the mirror time to reset too
-         state <= y_axis_state_return;
          y_axis_line <= NUM_ROWS;
+         y_axis_state <= y_axis_state_return;
       end
       else if (y_axis_state == y_axis_state_reset) begin
          y_axis_state <= y_axis_state_display;
