@@ -282,8 +282,8 @@ module RasterLaserProjector (
    assign GPIO[9] = y_axis_wr;
    assign LEDG[0] = y_axis_wr;
 
-   // laser output
-   reg [8:0]                                            pixel_column; // what pixel we are projecting now
+   // column of the pixel we are projecting now
+   reg [8:0]                                            pixel_column;
    wire [1:0]                                           laser_intensity;
    assign GPIO[11:10] = laser_intensity;
 
