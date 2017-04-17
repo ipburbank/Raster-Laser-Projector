@@ -402,6 +402,7 @@ module RasterLaserProjector (
                                 .video_in_TD_RESET       (TD_RESET_N),
                                 .video_in_overflow_flag  (),
 
+                                .polygon_ctrl_clk_clk    (x_axis_ctrl_clk),
                                 .clk_100k_clk              (CLOCK_100K)
                                 );
 endmodule
