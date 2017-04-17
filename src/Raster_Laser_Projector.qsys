@@ -9,11 +9,11 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element CLK_10mhz
+   element CLK_100k
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "2";
          type = "int";
       }
    }
@@ -29,7 +29,7 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "4";
          type = "int";
       }
    }
@@ -61,7 +61,7 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "3";
          type = "int";
       }
    }
@@ -99,7 +99,7 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
- <interface name="clk_100k" internal="CLK_10mhz.c0" type="clock" dir="start" />
+ <interface name="clk_100k" internal="CLK_100k.c0" type="clock" dir="start" />
  <interface
    name="clk_100mhz"
    internal="Clock_Generators.c0"
@@ -118,7 +118,12 @@
    dir="start" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface name="video_in" internal="Video_In.video_in" type="conduit" dir="end" />
- <module name="CLK_10mhz" kind="altpll" version="16.1" enabled="1">
+ <interface
+   name="video_in_framebuffer"
+   internal="Framebuffer.s2"
+   type="avalon"
+   dir="end" />
+ <module name="CLK_100k" kind="altpll" version="16.1" enabled="1">
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
   <parameter name="AUTO_INCLK_INTERFACE_CLOCK_RATE" value="0" />
   <parameter name="AVALON_USE_SEPARATE_SYSCLK" value="NO" />
@@ -522,7 +527,7 @@
    kind="clock"
    version="16.1"
    start="clk_0.clk"
-   end="CLK_10mhz.inclk_interface" />
+   end="CLK_100k.inclk_interface" />
  <connection
    kind="reset"
    version="16.1"
@@ -532,7 +537,7 @@
    kind="reset"
    version="16.1"
    start="clk_0.clk_reset"
-   end="CLK_10mhz.inclk_interface_reset" />
+   end="CLK_100k.inclk_interface_reset" />
  <connection
    kind="reset"
    version="16.1"

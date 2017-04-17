@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 16.1 203 (Future versions may contain additional information.) -->
- <!-- 2017.04.17.00:45:23 -->
+ <!-- 2017.04.17.14:04:22 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1492404323</value>
+  <value>1492452261</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -99,7 +99,7 @@
   <visible>true</visible>
   <valid>true</valid>
  </parameter>
- <module name="CLK_10mhz" kind="altpll" version="16.1" path="CLK_10mhz">
+ <module name="CLK_100k" kind="altpll" version="16.1" path="CLK_100k">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="HIDDEN_CUSTOM_ELABORATION">
@@ -5323,7 +5323,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492404323</value>
+   <value>1492452261</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -10625,9 +10625,9 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>CLK_10mhz</moduleName>
+    <moduleName>CLK_100k</moduleName>
     <slaveName>inclk_interface</slaveName>
-    <name>CLK_10mhz.inclk_interface</name>
+    <name>CLK_100k.inclk_interface</name>
    </clockDomainMember>
   </interface>
   <interface name="clk_reset" kind="reset_source" version="16.1">
@@ -11338,11 +11338,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>inclk_interface</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/CLK_10mhz.inclk_interface"
+   name="clk_0.clk/CLK_100k.inclk_interface"
    kind="clock"
    version="16.1"
    start="clk_0.clk"
-   end="CLK_10mhz.inclk_interface">
+   end="CLK_100k.inclk_interface">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -11361,7 +11361,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>CLK_10mhz</endModule>
+  <endModule>CLK_100k</endModule>
   <endConnectionPoint>inclk_interface</endConnectionPoint>
  </connection>
  <connection
@@ -11392,11 +11392,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>inclk_interface_reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/CLK_10mhz.inclk_interface_reset"
+   name="clk_0.clk_reset/CLK_100k.inclk_interface_reset"
    kind="reset"
    version="16.1"
    start="clk_0.clk_reset"
-   end="CLK_10mhz.inclk_interface_reset">
+   end="CLK_100k.inclk_interface_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -11415,7 +11415,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>CLK_10mhz</endModule>
+  <endModule>CLK_100k</endModule>
   <endConnectionPoint>inclk_interface_reset</endConnectionPoint>
  </connection>
  <connection

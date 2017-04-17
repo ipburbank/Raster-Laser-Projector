@@ -4,19 +4,25 @@
 
 `timescale 1 ps / 1 ps
 module Raster_Laser_Projector (
-		output wire       clk_100k_clk,           //         clk_100k.clk
-		output wire       clk_100mhz_clk,         //       clk_100mhz.clk
-		input  wire       clk_50mhz_in_clk,       //     clk_50mhz_in.clk
-		output wire       pixel_clk_clk,          //        pixel_clk.clk
-		output wire       polygon_ctrl_clk_clk,   // polygon_ctrl_clk.clk
-		input  wire       reset_reset_n,          //            reset.reset_n
-		input  wire       video_in_TD_CLK27,      //         video_in.TD_CLK27
-		input  wire [7:0] video_in_TD_DATA,       //                 .TD_DATA
-		input  wire       video_in_TD_HS,         //                 .TD_HS
-		input  wire       video_in_TD_VS,         //                 .TD_VS
-		input  wire       video_in_clk27_reset,   //                 .clk27_reset
-		output wire       video_in_TD_RESET,      //                 .TD_RESET
-		output wire       video_in_overflow_flag  //                 .overflow_flag
+		output wire        clk_100k_clk,                    //             clk_100k.clk
+		output wire        clk_100mhz_clk,                  //           clk_100mhz.clk
+		input  wire        clk_50mhz_in_clk,                //         clk_50mhz_in.clk
+		output wire        pixel_clk_clk,                   //            pixel_clk.clk
+		output wire        polygon_ctrl_clk_clk,            //     polygon_ctrl_clk.clk
+		input  wire        reset_reset_n,                   //                reset.reset_n
+		input  wire        video_in_TD_CLK27,               //             video_in.TD_CLK27
+		input  wire [7:0]  video_in_TD_DATA,                //                     .TD_DATA
+		input  wire        video_in_TD_HS,                  //                     .TD_HS
+		input  wire        video_in_TD_VS,                  //                     .TD_VS
+		input  wire        video_in_clk27_reset,            //                     .clk27_reset
+		output wire        video_in_TD_RESET,               //                     .TD_RESET
+		output wire        video_in_overflow_flag,          //                     .overflow_flag
+		input  wire [18:0] video_in_framebuffer_address,    // video_in_framebuffer.address
+		input  wire        video_in_framebuffer_chipselect, //                     .chipselect
+		input  wire        video_in_framebuffer_clken,      //                     .clken
+		input  wire        video_in_framebuffer_write,      //                     .write
+		output wire [7:0]  video_in_framebuffer_readdata,   //                     .readdata
+		input  wire [7:0]  video_in_framebuffer_writedata   //                     .writedata
 	);
 
 	wire         video_in_video_in_dma_waitrequest;           // mm_interconnect_0:Video_In_video_in_dma_waitrequest -> Video_In:video_in_dma_waitrequest
@@ -29,9 +35,9 @@ module Raster_Laser_Projector (
 	wire         mm_interconnect_0_framebuffer_s1_write;      // mm_interconnect_0:Framebuffer_s1_write -> Framebuffer:write
 	wire   [7:0] mm_interconnect_0_framebuffer_s1_writedata;  // mm_interconnect_0:Framebuffer_s1_writedata -> Framebuffer:writedata
 	wire         mm_interconnect_0_framebuffer_s1_clken;      // mm_interconnect_0:Framebuffer_s1_clken -> Framebuffer:clken
-	wire         rst_controller_reset_out_reset;              // rst_controller:reset_out -> [CLK_10mhz:reset, Clock_Generators:reset, Framebuffer:reset, mm_interconnect_0:Framebuffer_reset1_reset_bridge_in_reset_reset, mm_interconnect_0:Video_In_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_reset_out_reset;              // rst_controller:reset_out -> [CLK_100k:reset, Clock_Generators:reset, Framebuffer:reset, mm_interconnect_0:Framebuffer_reset1_reset_bridge_in_reset_reset, mm_interconnect_0:Video_In_reset_reset_bridge_in_reset_reset]
 
-	Raster_Laser_Projector_CLK_10mhz clk_10mhz (
+	Raster_Laser_Projector_CLK_100k clk_100k (
 		.clk                (clk_50mhz_in_clk),               //       inclk_interface.clk
 		.reset              (rst_controller_reset_out_reset), // inclk_interface_reset.reset
 		.read               (),                               //             pll_slave.read
@@ -86,12 +92,12 @@ module Raster_Laser_Projector (
 		.write       (mm_interconnect_0_framebuffer_s1_write),      //       .write
 		.readdata    (mm_interconnect_0_framebuffer_s1_readdata),   //       .readdata
 		.writedata   (mm_interconnect_0_framebuffer_s1_writedata),  //       .writedata
-		.address2    (),                                            //     s2.address
-		.chipselect2 (),                                            //       .chipselect
-		.clken2      (),                                            //       .clken
-		.write2      (),                                            //       .write
-		.readdata2   (),                                            //       .readdata
-		.writedata2  (),                                            //       .writedata
+		.address2    (video_in_framebuffer_address),                //     s2.address
+		.chipselect2 (video_in_framebuffer_chipselect),             //       .chipselect
+		.clken2      (video_in_framebuffer_clken),                  //       .clken
+		.write2      (video_in_framebuffer_write),                  //       .write
+		.readdata2   (video_in_framebuffer_readdata),               //       .readdata
+		.writedata2  (video_in_framebuffer_writedata),              //       .writedata
 		.clk         (clk_50mhz_in_clk),                            //   clk1.clk
 		.reset       (rst_controller_reset_out_reset),              // reset1.reset
 		.freeze      (1'b0),                                        // (terminated)
