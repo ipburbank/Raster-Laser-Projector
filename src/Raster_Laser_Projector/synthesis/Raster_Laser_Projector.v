@@ -4,6 +4,7 @@
 
 `timescale 1 ps / 1 ps
 module Raster_Laser_Projector (
+		output wire       clk_100k_clk,           //         clk_100k.clk
 		output wire       clk_100mhz_clk,         //       clk_100mhz.clk
 		input  wire       clk_50mhz_in_clk,       //     clk_50mhz_in.clk
 		output wire       pixel_clk_clk,          //        pixel_clk.clk
@@ -28,7 +29,30 @@ module Raster_Laser_Projector (
 	wire         mm_interconnect_0_framebuffer_s1_write;      // mm_interconnect_0:Framebuffer_s1_write -> Framebuffer:write
 	wire   [7:0] mm_interconnect_0_framebuffer_s1_writedata;  // mm_interconnect_0:Framebuffer_s1_writedata -> Framebuffer:writedata
 	wire         mm_interconnect_0_framebuffer_s1_clken;      // mm_interconnect_0:Framebuffer_s1_clken -> Framebuffer:clken
-	wire         rst_controller_reset_out_reset;              // rst_controller:reset_out -> [Clock_Generators:reset, Framebuffer:reset, mm_interconnect_0:Framebuffer_reset1_reset_bridge_in_reset_reset, mm_interconnect_0:Video_In_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_reset_out_reset;              // rst_controller:reset_out -> [CLK_10mhz:reset, Clock_Generators:reset, Framebuffer:reset, mm_interconnect_0:Framebuffer_reset1_reset_bridge_in_reset_reset, mm_interconnect_0:Video_In_reset_reset_bridge_in_reset_reset]
+
+	Raster_Laser_Projector_CLK_10mhz clk_10mhz (
+		.clk                (clk_50mhz_in_clk),               //       inclk_interface.clk
+		.reset              (rst_controller_reset_out_reset), // inclk_interface_reset.reset
+		.read               (),                               //             pll_slave.read
+		.write              (),                               //                      .write
+		.address            (),                               //                      .address
+		.readdata           (),                               //                      .readdata
+		.writedata          (),                               //                      .writedata
+		.c0                 (clk_100k_clk),                   //                    c0.clk
+		.scandone           (),                               //           (terminated)
+		.scandataout        (),                               //           (terminated)
+		.areset             (1'b0),                           //           (terminated)
+		.locked             (),                               //           (terminated)
+		.phasedone          (),                               //           (terminated)
+		.phasecounterselect (4'b0000),                        //           (terminated)
+		.phaseupdown        (1'b0),                           //           (terminated)
+		.phasestep          (1'b0),                           //           (terminated)
+		.scanclk            (1'b0),                           //           (terminated)
+		.scanclkena         (1'b0),                           //           (terminated)
+		.scandata           (1'b0),                           //           (terminated)
+		.configupdate       (1'b0)                            //           (terminated)
+	);
 
 	Raster_Laser_Projector_Clock_Generators clock_generators (
 		.clk                (clk_50mhz_in_clk),               //       inclk_interface.clk
