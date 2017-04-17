@@ -381,13 +381,13 @@ module RasterLaserProjector (
    // keep track of prev y axis position so we can reset the x axis when y axis changes lines
    reg [7:0] y_axis_position_prev;
    always @(posedge CLOCK_PIXEL)
-     y_axis_position_prev <= y_axis_position_prev;
+     y_axis_position_prev <= y_axis_position;
 
    always @(posedge CLOCK_PIXEL or posedge reset) begin
       if (reset) begin
          pixel_column <= 0;
       end
-      else if (y_axis_position_prev != y_axis_position_prev) begin
+      else if (y_axis_position_prev != y_axis_position) begin
          pixel_column <= 0;
       end
       else begin
