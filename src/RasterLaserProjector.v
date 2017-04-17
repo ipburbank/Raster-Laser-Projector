@@ -283,7 +283,8 @@ module RasterLaserProjector (
    assign LEDG[0] = y_axis_wr;
 
    // laser output
-   reg [1:0]                                           laser_intensity;
+   reg [8:0]                                            pixel_column; // what pixel we are projecting now
+   wire [1:0]                                           laser_intensity;
    assign GPIO[11:10] = laser_intensity;
 
    /*****************************************************************************
@@ -291,7 +292,13 @@ module RasterLaserProjector (
     *****************************************************************************/
 
    // Internal Wires
-   wire                                                CLOCK_100K;
+   wire                                                CLOCK_100K, CLOCK_PIXEL;
+
+   wire [7:0]                                          framebuffer_readdata;
+   wire [31:0]                                         framebuffer_address;
+   wire                                                framebuffer_write = 1'b0;
+   wire                                                framebuffer_clken = 1'b1;
+   wire                                                framebuffer_chipselect = 1'b1;
 
    // Internal Registers
 
@@ -368,7 +375,31 @@ module RasterLaserProjector (
             y_axis_state <= y_axis_state_display;
          end
       end
+   end // always @ (posedge x_axis_stb_filtered or posedge reset)
+
+   // ------------- PIXEL OUTPUT STATE MACHINE -------------
+   // keep track of prev y axis position so we can reset the x axis when y axis changes lines
+   reg [7:0] y_axis_position_prev;
+   always @(posedge CLOCK_PIXEL)
+     y_axis_position_prev <= y_axis_position_prev;
+
+   always @(posedge CLOCK_PIXEL or posedge reset) begin
+      if (reset) begin
+         pixel_column <= 0;
+      end
+      else if (y_axis_position_prev != y_axis_position_prev) begin
+         pixel_column <= 0;
+      end
+      else begin
+         pixel_column <= pixel_column + 1;
+      end
    end
+
+   // assign the address and receive the pixel.
+   // The pixel will be two cycles delayed, but that is OK.
+   assign framebuffer_address = (y_axis_position * 640) + pixel_column;
+   assign laser_intensity = (y_axis_state == y_axis_state_return) ? 0 : // blank on reset
+                            framebuffer_readdata[7:6];
 
    /*****************************************************************************
     *                             Sequential Logic                              *
@@ -402,8 +433,16 @@ module RasterLaserProjector (
                                 .video_in_TD_RESET       (TD_RESET_N),
                                 .video_in_overflow_flag  (),
 
+                                .video_in_framebuffer_address    (framebuffer_address),
+                                .video_in_framebuffer_chipselect (framebuffer_chipselect),
+                                .video_in_framebuffer_clken      (framebuffer_clken),
+                                .video_in_framebuffer_write      (framebuffer_write),
+                                .video_in_framebuffer_readdata   (framebuffer_readdata),
+                                .video_in_framebuffer_writedata  (),
+
                                 .polygon_ctrl_clk_clk    (x_axis_ctrl_clk),
-                                .clk_100k_clk              (CLOCK_100K)
+                                .pixel_clk_clk           (CLOCK_PIXEL),
+                                .clk_100k_clk            (CLOCK_100K)
                                 );
 endmodule
 
