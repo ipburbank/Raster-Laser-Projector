@@ -131,7 +131,7 @@ module RasterLaserProjector (
    localparam NUM_COLS = 320;
 
    // time to reset y axis from bottom to top in eqivilent number of rows
-   localparam Y_AXIS_RESET_TIME = 25;
+   localparam Y_AXIS_RETURN_TIME = 25;
 
    /*****************************************************************************
     *                             Port Declarations                             *
@@ -268,14 +268,19 @@ module RasterLaserProjector (
    assign GPIO[13] = x_axis_ctrl_clk;
    // give convenient name to the x-axis opto
    wire                                                 x_axis_stb;
+   reg                                                  x_axis_stb_filtered;
    assign x_axis_stb = GPIO[8];
+   assign LEDG[1] = x_axis_stb_filtered;
+   assign LEDG[2] = x_axis_stb;
 
    // DAC connections
    // what row we are displaying, [0, NUM_ROWS - 1]
    reg [7:0]                                            y_axis_position;
    assign GPIO[7:0] = y_axis_position;
-   reg                                                  y_axis_wr;
+   assign LEDR[7:0] = y_axis_position;
+   reg                                                  y_axis_wr; // tell DAC to write
    assign GPIO[9] = y_axis_wr;
+   assign LEDG[0] = y_axis_wr;
 
    // laser output
    reg [1:0]                                           laser_intensity;
@@ -286,38 +291,81 @@ module RasterLaserProjector (
     *****************************************************************************/
 
    // Internal Wires
+   wire                                                CLOCK_100K;
 
    // Internal Registers
-
-   // State Machine Registers
-   reg [2:0]                                            y_axis_state;
-   localparam y_axis_state_reset = 0, y_axis_state_display=1, y_axis_state_return=2;
 
    /*****************************************************************************
     *                         Finite State Machine(s)                           *
     *****************************************************************************/
 
-   always @(posedge x_axis_stb) begin
-      y_axis_position <= y_axis_position + 1; // increment unless reset
+   // x axis strobe debounce machine
+   reg [1:0]                                            stb_filter_state;
+   assign LEDG[4:3] = stb_filter_state;
 
+   localparam stb_filter_state_LL=0, stb_filter_state_LH=1, stb_filter_state_HH=2, stb_filter_state_HL=3;
+   always @(posedge CLOCK_100K or posedge reset) begin
+      if (reset) begin
+         stb_filter_state <= stb_filter_state_LL;
+      end
+      else if (stb_filter_state == stb_filter_state_LL) begin
+         if (x_axis_stb == 1) begin
+            stb_filter_state <= stb_filter_state_LH;
+         end
+         x_axis_stb_filtered <= 0;
+      end
+      else if (stb_filter_state == stb_filter_state_LH) begin
+         if (x_axis_stb == 1) begin
+            stb_filter_state <= stb_filter_state_HH;
+         end
+         else begin
+            stb_filter_state <= stb_filter_state_LL;
+         end
+         x_axis_stb_filtered <= 0;
+      end
+      else if (stb_filter_state == stb_filter_state_HH) begin
+         if (x_axis_stb == 0) begin
+            stb_filter_state <= stb_filter_state_HL;
+         end
+         x_axis_stb_filtered <= 1;
+      end
+      else if (stb_filter_state == stb_filter_state_HL) begin
+         if (x_axis_stb == 0) begin
+            stb_filter_state <= stb_filter_state_LL;
+         end
+         else begin
+            stb_filter_state <= stb_filter_state_HH;
+         end
+         x_axis_stb_filtered <= 1;
+      end
+   end
+
+   // State Machine Registers
+   reg [2:0]                                            y_axis_state;
+   localparam y_axis_state_reset = 0, y_axis_state_display=1, y_axis_state_return=2;
+   reg [5:0]                                            y_axis_return_counter;
+
+   always @(posedge x_axis_stb_filtered or posedge reset) begin
       if (reset) begin
          // go to the return state to give the mirror time to reset too
          y_axis_state <= y_axis_state_return;
-         y_axis_position <= NUM_ROWS;
-      end
-      else if (y_axis_state == y_axis_state_reset) begin
-         y_axis_state <= y_axis_state_display;
-
          y_axis_position <= 0;
+         y_axis_return_counter <= 0;
+         y_axis_wr <= 1;
       end
       else if (y_axis_state == y_axis_state_display) begin
+         y_axis_position <= y_axis_position + 1;
+         y_axis_wr <= ~y_axis_wr;
          if (y_axis_position == (NUM_ROWS - 1)) begin
             y_axis_state <= y_axis_state_return;
+            y_axis_return_counter <= 0;
          end
       end
       else if (y_axis_state == y_axis_state_return) begin
-         if (y_axis_position == (NUM_ROWS + Y_AXIS_RESET_TIME)) begin
-            y_axis_state <= y_axis_state_reset;
+         y_axis_position <= 0;
+         y_axis_return_counter <= y_axis_return_counter + 1;
+         if (y_axis_return_counter == Y_AXIS_RETURN_TIME) begin
+            y_axis_state <= y_axis_state_display;
          end
       end
    end
@@ -342,18 +390,19 @@ module RasterLaserProjector (
     *****************************************************************************/
 
    Raster_Laser_Projector qsys (
-                                .clk_50mhz_in_clk                   (CLOCK_50),  // clk_50mhz_in.clk
-                                .reset_reset_n                      (1'b0),      // reset.reset_n
+                                .clk_50mhz_in_clk        (CLOCK_50),  // clk_50mhz_in.clk
+                                .reset_reset_n           (1'b0),      // reset.reset_n
 
                                 // Video In Subsystem
-                                .video_in_TD_CLK27                                              (TD_CLK27),
-                                .video_in_TD_DATA							(TD_DATA),
-                                .video_in_TD_HS							(TD_HS),
-                                .video_in_TD_VS							(TD_VS),
-                                .video_in_clk27_reset					(),
-                                .video_in_TD_RESET						(TD_RESET_N),
-                                .video_in_overflow_flag					()
+                                .video_in_TD_CLK27       (TD_CLK27),
+                                .video_in_TD_DATA        (TD_DATA),
+                                .video_in_TD_HS          (TD_HS),
+                                .video_in_TD_VS          (TD_VS),
+                                .video_in_clk27_reset    (),
+                                .video_in_TD_RESET       (TD_RESET_N),
+                                .video_in_overflow_flag  (),
 
+                                .clk_100k_clk              (CLOCK_100K)
                                 );
 endmodule
 
