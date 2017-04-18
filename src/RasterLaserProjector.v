@@ -398,7 +398,7 @@ module RasterLaserProjector (
    // assign the address and receive the pixel.
    // The pixel will be two cycles delayed, but that is OK.
    assign framebuffer_address = (y_axis_position * 640) + pixel_column;
-   assign laser_intensity = (y_axis_state == y_axis_state_return) ? 0 : // blank on reset
+   assign laser_intensity = (y_axis_state == y_axis_state_return) || reset ? 0 : // blank on reset
                             framebuffer_readdata[7:6];
 
    /*****************************************************************************
