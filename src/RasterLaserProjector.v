@@ -390,16 +390,17 @@ module RasterLaserProjector (
       else if (y_axis_position_prev != y_axis_position) begin
          pixel_column <= 0;
       end
-      else begin
+      else if (pixel_column < NUM_COLS) begin
          pixel_column <= pixel_column + 1;
       end
    end
 
    // assign the address and receive the pixel.
    // The pixel will be two cycles delayed, but that is OK.
-   assign framebuffer_address = (y_axis_position * 640) + pixel_column;
-   assign laser_intensity = (y_axis_state == y_axis_state_return) || reset ? 0 : // blank on reset
-                            framebuffer_readdata[7:6];
+   assign framebuffer_address = (y_axis_position * NUM_COLS) + pixel_column;
+   assign laser_intensity = (y_axis_state == y_axis_state_return)
+     || (pixel_column < NUM_COLS)
+     || reset ? 0 : framebuffer_readdata[7:6]; // blank on reset
 
    /*****************************************************************************
     *                             Sequential Logic                              *
