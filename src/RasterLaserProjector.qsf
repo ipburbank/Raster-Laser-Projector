@@ -594,6 +594,8 @@ set_location_assignment PIN_E10 -to EXT_IO[5]
 set_location_assignment PIN_D9 -to EXT_IO[6]
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name MIF_FILE bruce.mif
+set_global_assignment -name SDC_FILE RasterLaserProjector.sdc
 set_global_assignment -name VERILOG_FILE RasterLaserProjector.v
 set_global_assignment -name QIP_FILE Raster_Laser_Projector/synthesis/Raster_Laser_Projector.qip
 set_global_assignment -name CDF_FILE output_files/PersistantProgram.cdf
