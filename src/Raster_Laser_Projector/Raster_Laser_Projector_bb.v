@@ -12,7 +12,13 @@ module Raster_Laser_Projector (
 	video_in_TD_VS,
 	video_in_clk27_reset,
 	video_in_TD_RESET,
-	video_in_overflow_flag);	
+	video_in_overflow_flag,
+	video_in_framebuffer_address,
+	video_in_framebuffer_chipselect,
+	video_in_framebuffer_clken,
+	video_in_framebuffer_write,
+	video_in_framebuffer_readdata,
+	video_in_framebuffer_writedata);	
 
 	output		clk_100k_clk;
 	output		clk_100mhz_clk;
@@ -27,4 +33,10 @@ module Raster_Laser_Projector (
 	input		video_in_clk27_reset;
 	output		video_in_TD_RESET;
 	output		video_in_overflow_flag;
+	input	[18:0]	video_in_framebuffer_address;
+	input		video_in_framebuffer_chipselect;
+	input		video_in_framebuffer_clken;
+	input		video_in_framebuffer_write;
+	output	[7:0]	video_in_framebuffer_readdata;
+	input	[7:0]	video_in_framebuffer_writedata;
 endmodule

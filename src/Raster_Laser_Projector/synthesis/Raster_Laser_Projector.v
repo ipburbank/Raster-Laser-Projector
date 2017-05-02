@@ -4,19 +4,25 @@
 
 `timescale 1 ps / 1 ps
 module Raster_Laser_Projector (
-		output wire       clk_100k_clk,           //         clk_100k.clk
-		output wire       clk_100mhz_clk,         //       clk_100mhz.clk
-		input  wire       clk_50mhz_in_clk,       //     clk_50mhz_in.clk
-		output wire       pixel_clk_clk,          //        pixel_clk.clk
-		output wire       polygon_ctrl_clk_clk,   // polygon_ctrl_clk.clk
-		input  wire       reset_reset_n,          //            reset.reset_n
-		input  wire       video_in_TD_CLK27,      //         video_in.TD_CLK27
-		input  wire [7:0] video_in_TD_DATA,       //                 .TD_DATA
-		input  wire       video_in_TD_HS,         //                 .TD_HS
-		input  wire       video_in_TD_VS,         //                 .TD_VS
-		input  wire       video_in_clk27_reset,   //                 .clk27_reset
-		output wire       video_in_TD_RESET,      //                 .TD_RESET
-		output wire       video_in_overflow_flag  //                 .overflow_flag
+		output wire        clk_100k_clk,                    //             clk_100k.clk
+		output wire        clk_100mhz_clk,                  //           clk_100mhz.clk
+		input  wire        clk_50mhz_in_clk,                //         clk_50mhz_in.clk
+		output wire        pixel_clk_clk,                   //            pixel_clk.clk
+		output wire        polygon_ctrl_clk_clk,            //     polygon_ctrl_clk.clk
+		input  wire        reset_reset_n,                   //                reset.reset_n
+		input  wire        video_in_TD_CLK27,               //             video_in.TD_CLK27
+		input  wire [7:0]  video_in_TD_DATA,                //                     .TD_DATA
+		input  wire        video_in_TD_HS,                  //                     .TD_HS
+		input  wire        video_in_TD_VS,                  //                     .TD_VS
+		input  wire        video_in_clk27_reset,            //                     .clk27_reset
+		output wire        video_in_TD_RESET,               //                     .TD_RESET
+		output wire        video_in_overflow_flag,          //                     .overflow_flag
+		input  wire [18:0] video_in_framebuffer_address,    // video_in_framebuffer.address
+		input  wire        video_in_framebuffer_chipselect, //                     .chipselect
+		input  wire        video_in_framebuffer_clken,      //                     .clken
+		input  wire        video_in_framebuffer_write,      //                     .write
+		output wire [7:0]  video_in_framebuffer_readdata,   //                     .readdata
+		input  wire [7:0]  video_in_framebuffer_writedata   //                     .writedata
 	);
 
 	wire         video_in_video_in_dma_waitrequest;           // mm_interconnect_0:Video_In_video_in_dma_waitrequest -> Video_In:video_in_dma_waitrequest
@@ -29,9 +35,10 @@ module Raster_Laser_Projector (
 	wire         mm_interconnect_0_framebuffer_s1_write;      // mm_interconnect_0:Framebuffer_s1_write -> Framebuffer:write
 	wire   [7:0] mm_interconnect_0_framebuffer_s1_writedata;  // mm_interconnect_0:Framebuffer_s1_writedata -> Framebuffer:writedata
 	wire         mm_interconnect_0_framebuffer_s1_clken;      // mm_interconnect_0:Framebuffer_s1_clken -> Framebuffer:clken
-	wire         rst_controller_reset_out_reset;              // rst_controller:reset_out -> [CLK_10mhz:reset, Clock_Generators:reset, Framebuffer:reset, mm_interconnect_0:Framebuffer_reset1_reset_bridge_in_reset_reset, mm_interconnect_0:Video_In_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_reset_out_reset;              // rst_controller:reset_out -> [CLK_100k:reset, Clock_Generators:reset, Framebuffer:reset, mm_interconnect_0:Framebuffer_reset1_reset_bridge_in_reset_reset, mm_interconnect_0:Video_In_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_001_reset_out_reset;          // rst_controller_001:reset_out -> Framebuffer:reset2
 
-	Raster_Laser_Projector_CLK_10mhz clk_10mhz (
+	Raster_Laser_Projector_CLK_100k clk_100k (
 		.clk                (clk_50mhz_in_clk),               //       inclk_interface.clk
 		.reset              (rst_controller_reset_out_reset), // inclk_interface_reset.reset
 		.read               (),                               //             pll_slave.read
@@ -80,22 +87,25 @@ module Raster_Laser_Projector (
 	);
 
 	Raster_Laser_Projector_Framebuffer framebuffer (
+		.clk         (clk_50mhz_in_clk),                            //   clk1.clk
 		.address     (mm_interconnect_0_framebuffer_s1_address),    //     s1.address
 		.clken       (mm_interconnect_0_framebuffer_s1_clken),      //       .clken
 		.chipselect  (mm_interconnect_0_framebuffer_s1_chipselect), //       .chipselect
 		.write       (mm_interconnect_0_framebuffer_s1_write),      //       .write
 		.readdata    (mm_interconnect_0_framebuffer_s1_readdata),   //       .readdata
 		.writedata   (mm_interconnect_0_framebuffer_s1_writedata),  //       .writedata
-		.address2    (),                                            //     s2.address
-		.chipselect2 (),                                            //       .chipselect
-		.clken2      (),                                            //       .clken
-		.write2      (),                                            //       .write
-		.readdata2   (),                                            //       .readdata
-		.writedata2  (),                                            //       .writedata
-		.clk         (clk_50mhz_in_clk),                            //   clk1.clk
 		.reset       (rst_controller_reset_out_reset),              // reset1.reset
+		.address2    (video_in_framebuffer_address),                //     s2.address
+		.chipselect2 (video_in_framebuffer_chipselect),             //       .chipselect
+		.clken2      (video_in_framebuffer_clken),                  //       .clken
+		.write2      (video_in_framebuffer_write),                  //       .write
+		.readdata2   (video_in_framebuffer_readdata),               //       .readdata
+		.writedata2  (video_in_framebuffer_writedata),              //       .writedata
+		.clk2        (pixel_clk_clk),                               //   clk2.clk
+		.reset2      (rst_controller_001_reset_out_reset),          // reset2.reset
+		.reset_req   (1'b0),                                        // (terminated)
 		.freeze      (1'b0),                                        // (terminated)
-		.reset_req   (1'b0)                                         // (terminated)
+		.reset_req2  (1'b0)                                         // (terminated)
 	);
 
 	Raster_Laser_Projector_Video_In video_in (
@@ -191,6 +201,69 @@ module Raster_Laser_Projector (
 		.reset_req_in14 (1'b0),                           // (terminated)
 		.reset_in15     (1'b0),                           // (terminated)
 		.reset_req_in15 (1'b0)                            // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_001 (
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.clk            (pixel_clk_clk),                      //       clk.clk
+		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
 	);
 
 endmodule

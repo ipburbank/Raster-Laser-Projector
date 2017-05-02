@@ -131,7 +131,10 @@ module RasterLaserProjector (
    localparam NUM_COLS = 320;
 
    // time to reset y axis from bottom to top in eqivilent number of rows
-   localparam Y_AXIS_RETURN_TIME = 25;
+   localparam Y_AXIS_HEADSTART_TIME = 75;
+   localparam Y_AXIS_HOLD_TIME      = 0;
+
+   localparam X_AXIS_DELAY = 20;
 
    /*****************************************************************************
     *                             Port Declarations                             *
@@ -267,37 +270,53 @@ module RasterLaserProjector (
    wire                                                 x_axis_ctrl_clk;
    assign GPIO[13] = x_axis_ctrl_clk;
    // give convenient name to the x-axis opto
-   wire                                                 x_axis_stb;
-   reg                                                  x_axis_stb_filtered;
-   assign x_axis_stb = GPIO[8];
+   wire                                                 x_axis_stb_raw1;
+   reg                                                  x_axis_stb, x_axis_stb_filtered, x_axis_stb_raw2;
+   assign x_axis_stb_raw1 = GPIO[8];
    assign LEDG[1] = x_axis_stb_filtered;
    assign LEDG[2] = x_axis_stb;
 
    // DAC connections
    // what row we are displaying, [0, NUM_ROWS - 1]
    reg [7:0]                                            y_axis_position;
-   assign GPIO[7:0] = y_axis_position;
+   wire [8:0]                                           y_axis_address;
+   wire [7:0]                                           y_axis_sin_out;
    assign LEDR[7:0] = y_axis_position;
+   assign GPIO[7:0] = y_axis_sin_out;
+   Sin_Table sintable (CLOCK2_50, y_axis_address[8:1], y_axis_sin_out);
+
    reg                                                  y_axis_wr; // tell DAC to write
    assign GPIO[9] = y_axis_wr;
    assign LEDG[0] = y_axis_wr;
 
-   // laser output
-   reg [1:0]                                           laser_intensity;
-   assign GPIO[11:10] = laser_intensity;
+   // column of the pixel we are projecting now
+   reg [8:0]                                            pixel_column;
+   wire [1:0]                                           laser_intensity;
+   assign GPIO[11] = laser_intensity[0];
+   assign GPIO[10] = laser_intensity[1];
 
    /*****************************************************************************
     *                 Internal Wires and Registers Declarations                 *
     *****************************************************************************/
 
    // Internal Wires
-   wire                                                CLOCK_100K;
+   wire                                                CLOCK_100K, CLOCK_PIXEL;
+
+   wire [7:0]                                          framebuffer_readdata;
+   wire [31:0]                                         framebuffer_address;
+   wire                                                framebuffer_write = 1'b0;
+   wire                                                framebuffer_clken = 1'b1;
+   wire                                                framebuffer_chipselect = 1'b1;
 
    // Internal Registers
 
    /*****************************************************************************
     *                         Finite State Machine(s)                           *
     *****************************************************************************/
+   always @(posedge CLOCK_100K) begin
+      x_axis_stb_raw2 <= x_axis_stb_raw1;
+      x_axis_stb <= x_axis_stb_raw2;
+   end
 
    // x axis strobe debounce machine
    reg [1:0]                                            stb_filter_state;
@@ -342,33 +361,87 @@ module RasterLaserProjector (
 
    // State Machine Registers
    reg [2:0]                                            y_axis_state;
-   localparam y_axis_state_reset = 0, y_axis_state_display=1, y_axis_state_return=2;
-   reg [5:0]                                            y_axis_return_counter;
+   localparam y_axis_state_reset = 0, y_axis_state_display=1, y_axis_state_headstart=2, y_axis_state_return=3, y_axis_state_hold=4;
+   reg [7:0]                                            y_axis_headstart_counter, y_axis_return_counter, y_axis_hold_counter;
 
-   always @(posedge x_axis_stb_filtered or posedge reset) begin
+   always @(posedge CLOCK_100K) y_axis_wr <= ~y_axis_wr;
+
+   always @(posedge x_axis_stb_filtered) begin
       if (reset) begin
          // go to the return state to give the mirror time to reset too
          y_axis_state <= y_axis_state_return;
          y_axis_position <= 0;
          y_axis_return_counter <= 0;
-         y_axis_wr <= 1;
+         y_axis_hold_counter <= 0;
+         y_axis_headstart_counter <= 0;
       end
       else if (y_axis_state == y_axis_state_display) begin
          y_axis_position <= y_axis_position + 1;
-         y_axis_wr <= ~y_axis_wr;
          if (y_axis_position == (NUM_ROWS - 1)) begin
             y_axis_state <= y_axis_state_return;
-            y_axis_return_counter <= 0;
+            y_axis_return_counter <= NUM_ROWS - 1;
+            y_axis_hold_counter <= 0;
+            y_axis_headstart_counter <= 0;
+            y_axis_position <= 0;
          end
       end
       else if (y_axis_state == y_axis_state_return) begin
-         y_axis_position <= 0;
-         y_axis_return_counter <= y_axis_return_counter + 1;
-         if (y_axis_return_counter == Y_AXIS_RETURN_TIME) begin
+         y_axis_return_counter <= y_axis_return_counter - 1;
+         if (y_axis_return_counter == 0) begin
+            y_axis_return_counter <= 0; // cancel that write
+            y_axis_state <= y_axis_state_hold;
+         end
+      end
+      else if (y_axis_state == y_axis_state_hold) begin
+         y_axis_hold_counter <= y_axis_hold_counter + 1;
+         if (y_axis_hold_counter == Y_AXIS_HOLD_TIME) begin
+            y_axis_state <= y_axis_state_headstart;
+         end
+      end
+      else if (y_axis_state == y_axis_state_headstart) begin
+         y_axis_headstart_counter <= y_axis_headstart_counter + 1;
+         if (y_axis_headstart_counter == Y_AXIS_HEADSTART_TIME) begin
             y_axis_state <= y_axis_state_display;
          end
       end
+   end // always @ (posedge x_axis_stb_filtered or posedge reset)
+
+   assign y_axis_address = y_axis_position + y_axis_headstart_counter + y_axis_return_counter;
+
+   // ------------- PIXEL OUTPUT STATE MACHINE -------------
+   // keep track of prev y axis position so we can reset the x axis when y axis changes lines
+   reg [7:0] y_axis_position_prev;
+   always @(posedge CLOCK_PIXEL)
+     y_axis_position_prev <= y_axis_position;
+
+   reg [9:0] x_axis_delay_count;
+
+   always @(posedge CLOCK_PIXEL or posedge reset) begin
+      if (reset) begin
+         pixel_column <= 0;
+         x_axis_delay_count <= 0;
+      end
+      else if (x_axis_delay_count < X_AXIS_DELAY) begin
+         x_axis_delay_count <= x_axis_delay_count + 1;
+      end
+      else if (y_axis_position_prev != y_axis_position) begin // start a new row
+         pixel_column <= 0;
+         x_axis_delay_count <= 0;
+      end
+      else if (pixel_column < NUM_COLS) begin
+         pixel_column <= pixel_column + 1;
+      end
    end
+
+   // assign the address and receive the pixel.
+   // The pixel will be two cycles delayed, but that is OK.
+   assign framebuffer_address = ((NUM_ROWS - y_axis_position - 1) * NUM_COLS) + pixel_column + 32'h900000;
+   assign laser_intensity = ((y_axis_state != y_axis_state_display)
+                             || (x_axis_delay_count < X_AXIS_DELAY)
+                             || (pixel_column >= NUM_COLS)
+                             || reset) ? 0 : framebuffer_readdata[7:6]; // blank on reset
+
+   assign LEDR[15:8] = framebuffer_readdata[7:0];
 
    /*****************************************************************************
     *                             Sequential Logic                              *
@@ -378,12 +451,6 @@ module RasterLaserProjector (
    /*****************************************************************************
     *                            Combinational Logic                            *
     *****************************************************************************/
-
-   // Output Assignments
-   assign GPIO[ 0]		= 1'bZ;
-   assign GPIO[ 2]		= 1'bZ;
-   assign GPIO[16]		= 1'bZ;
-   assign GPIO[18]		= 1'bZ;
 
    /*****************************************************************************
     *                              Internal Modules                             *
@@ -402,8 +469,16 @@ module RasterLaserProjector (
                                 .video_in_TD_RESET       (TD_RESET_N),
                                 .video_in_overflow_flag  (),
 
+                                .video_in_framebuffer_address    (framebuffer_address),
+                                .video_in_framebuffer_chipselect (framebuffer_chipselect),
+                                .video_in_framebuffer_clken      (framebuffer_clken),
+                                .video_in_framebuffer_write      (framebuffer_write),
+                                .video_in_framebuffer_readdata   (framebuffer_readdata),
+                                .video_in_framebuffer_writedata  (),
+
                                 .polygon_ctrl_clk_clk    (x_axis_ctrl_clk),
-                                .clk_100k_clk              (CLOCK_100K)
+                                .pixel_clk_clk           (CLOCK_PIXEL),
+                                .clk_100k_clk            (CLOCK_100K)
                                 );
 endmodule
 

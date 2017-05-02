@@ -5,7 +5,7 @@
  version="16.1"
  fabric="QSYS">
  <!-- Format version 16.1 203 (Future versions may contain additional information.) -->
- <!-- 2017.04.17.00:45:28 -->
+ <!-- 2017.04.21.18:56:13 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -57,7 +57,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1492404323</value>
+  <value>1492815367</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -151,7 +151,7 @@
   <visible>false</visible>
   <valid>true</valid>
  </parameter>
- <module name="CLK_10mhz" kind="altpll" version="16.1" path="CLK_10mhz">
+ <module name="CLK_100k" kind="altpll" version="16.1" path="CLK_100k">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="HIDDEN_CUSTOM_ELABORATION">
@@ -524,7 +524,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CLK0_DIVIDE_BY">
    <type>java.lang.String</type>
-   <value>500</value>
+   <value>5</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1404,7 +1404,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="HIDDEN_CONSTANTS">
    <type>java.lang.String</type>
-   <value>CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 1 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_UNUSED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 500 CT#PORT_LOCKED PORT_UNUSED</value>
+   <value>CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_UNUSED CT#PORT_clk1 PORT_UNUSED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 1 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#PORT_ARESET PORT_UNUSED CT#BANDWIDTH_TYPE AUTO CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 5 CT#PORT_LOCKED PORT_UNUSED</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -1412,7 +1412,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="HIDDEN_PRIVATES">
    <type>java.lang.String</type>
-   <value>PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 0 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 0.10000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 0 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 0.100000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1492400229062458.mif PT#ACTIVECLK_CHECK 0</value>
+   <value>PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 0 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ0 10.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 0 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE0 10.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK0 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#CLKLOSS_CHECK 0 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE0 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1492400229062458.mif PT#ACTIVECLK_CHECK 0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -1469,7 +1469,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_INCLK_INTERFACE_CLOCK_RATE">
    <type>java.lang.Long</type>
-   <value>0</value>
+   <value>50000000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -1532,7 +1532,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRateKnown">
     <type>java.lang.Boolean</type>
-    <value>false</value>
+    <value>true</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -1540,7 +1540,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>java.lang.Long</type>
-    <value>0</value>
+    <value>50000000</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -1975,7 +1975,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>long</type>
-    <value>100000</value>
+    <value>10000000</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -2304,7 +2304,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CLK1_MULTIPLY_BY">
    <type>java.lang.String</type>
-   <value>72</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -2416,7 +2416,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="CLK1_DIVIDE_BY">
    <type>java.lang.String</type>
-   <value>3125</value>
+   <value>10</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -3288,7 +3288,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="HIDDEN_CONSTANTS">
    <type>java.lang.String</type>
-   <value>CT#CLK2_DIVIDE_BY 25000 CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_USED CT#PORT_clk1 PORT_USED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 2 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#CLK1_DUTY_CYCLE 50 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#CLK1_MULTIPLY_BY 72 CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#CLK1_PHASE_SHIFT 0 CT#PORT_ARESET PORT_USED CT#BANDWIDTH_TYPE AUTO CT#CLK2_MULTIPLY_BY 1 CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#CLK2_DUTY_CYCLE 5 CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK2_PHASE_SHIFT 0 CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 1 CT#CLK1_DIVIDE_BY 3125 CT#PORT_LOCKED PORT_USED</value>
+   <value>CT#CLK2_DIVIDE_BY 25000 CT#PORT_clk5 PORT_UNUSED CT#PORT_clk4 PORT_UNUSED CT#PORT_clk3 PORT_UNUSED CT#PORT_clk2 PORT_USED CT#PORT_clk1 PORT_USED CT#PORT_clk0 PORT_USED CT#CLK0_MULTIPLY_BY 2 CT#PORT_SCANWRITE PORT_UNUSED CT#PORT_SCANACLR PORT_UNUSED CT#PORT_PFDENA PORT_UNUSED CT#PORT_PLLENA PORT_UNUSED CT#PORT_SCANDATA PORT_UNUSED CT#PORT_SCANCLKENA PORT_UNUSED CT#WIDTH_CLOCK 5 CT#PORT_SCANDATAOUT PORT_UNUSED CT#LPM_TYPE altpll CT#PLL_TYPE AUTO CT#CLK0_PHASE_SHIFT 0 CT#CLK1_DUTY_CYCLE 50 CT#PORT_PHASEDONE PORT_UNUSED CT#OPERATION_MODE NORMAL CT#PORT_CONFIGUPDATE PORT_UNUSED CT#CLK1_MULTIPLY_BY 1 CT#COMPENSATE_CLOCK CLK0 CT#PORT_CLKSWITCH PORT_UNUSED CT#INCLK0_INPUT_FREQUENCY 20000 CT#PORT_SCANDONE PORT_UNUSED CT#PORT_CLKLOSS PORT_UNUSED CT#PORT_INCLK1 PORT_UNUSED CT#AVALON_USE_SEPARATE_SYSCLK NO CT#PORT_INCLK0 PORT_USED CT#PORT_clkena5 PORT_UNUSED CT#PORT_clkena4 PORT_UNUSED CT#PORT_clkena3 PORT_UNUSED CT#PORT_clkena2 PORT_UNUSED CT#PORT_clkena1 PORT_UNUSED CT#PORT_clkena0 PORT_UNUSED CT#CLK1_PHASE_SHIFT 0 CT#PORT_ARESET PORT_USED CT#BANDWIDTH_TYPE AUTO CT#CLK2_MULTIPLY_BY 1 CT#INTENDED_DEVICE_FAMILY {Cyclone IV E} CT#PORT_SCANREAD PORT_UNUSED CT#CLK2_DUTY_CYCLE 5 CT#PORT_PHASESTEP PORT_UNUSED CT#PORT_SCANCLK PORT_UNUSED CT#PORT_CLKBAD1 PORT_UNUSED CT#PORT_CLKBAD0 PORT_UNUSED CT#PORT_FBIN PORT_UNUSED CT#PORT_PHASEUPDOWN PORT_UNUSED CT#PORT_extclk3 PORT_UNUSED CT#PORT_extclk2 PORT_UNUSED CT#PORT_extclk1 PORT_UNUSED CT#PORT_PHASECOUNTERSELECT PORT_UNUSED CT#PORT_extclk0 PORT_UNUSED CT#PORT_ACTIVECLOCK PORT_UNUSED CT#CLK2_PHASE_SHIFT 0 CT#CLK0_DUTY_CYCLE 50 CT#CLK0_DIVIDE_BY 1 CT#CLK1_DIVIDE_BY 10 CT#PORT_LOCKED PORT_USED</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3296,7 +3296,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="HIDDEN_PRIVATES">
    <type>java.lang.String</type>
-   <value>PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT2 MHz PT#OUTPUT_FREQ_UNIT1 MHz PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 1 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#USE_CLK2 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK1 1 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT2 deg PT#LVDS_PHASE_SHIFT_UNIT1 deg PT#OUTPUT_FREQ_MODE2 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#OUTPUT_FREQ_MODE1 1 PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ2 0.00200000 PT#OUTPUT_FREQ1 1.15200000 PT#OUTPUT_FREQ0 100.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 1 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT2 0.00000000 PT#PHASE_SHIFT1 0.00000000 PT#DIV_FACTOR2 1 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR1 1 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA2 0 PT#USE_CLKENA1 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE2 0.002000 PT#EFF_OUTPUT_FREQ_VALUE1 1.152000 PT#EFF_OUTPUT_FREQ_VALUE0 100.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK2 1 PT#STICKY_CLK1 1 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK2 0 PT#MIRROR_CLK1 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#MIRROR_CLK0 0 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#CLKLOSS_CHECK 0 PT#PHASE_SHIFT_UNIT2 deg PT#PHASE_SHIFT_UNIT1 deg PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR2 1 PT#MULT_FACTOR1 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#DUTY_CYCLE2 5.00000000 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE1 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#DUTY_CYCLE0 50.00000000 PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1486666040839923.mif PT#ACTIVECLK_CHECK 0</value>
+   <value>PT#GLOCKED_FEATURE_ENABLED 0 PT#SPREAD_FEATURE_ENABLED 0 PT#BANDWIDTH_FREQ_UNIT MHz PT#CUR_DEDICATED_CLK c0 PT#INCLK0_FREQ_EDIT 50.000 PT#BANDWIDTH_PRESET Low PT#PLL_LVDS_PLL_CHECK 0 PT#BANDWIDTH_USE_PRESET 0 PT#AVALON_USE_SEPARATE_SYSCLK NO PT#PLL_ENHPLL_CHECK 0 PT#OUTPUT_FREQ_UNIT2 MHz PT#OUTPUT_FREQ_UNIT1 MHz PT#OUTPUT_FREQ_UNIT0 MHz PT#PHASE_RECONFIG_FEATURE_ENABLED 1 PT#CREATE_CLKBAD_CHECK 0 PT#CLKSWITCH_CHECK 0 PT#INCLK1_FREQ_EDIT 100.000 PT#NORMAL_MODE_RADIO 1 PT#SRC_SYNCH_COMP_RADIO 0 PT#PLL_ARESET_CHECK 1 PT#LONG_SCAN_RADIO 1 PT#SCAN_FEATURE_ENABLED 1 PT#USE_CLK2 1 PT#PHASE_RECONFIG_INPUTS_CHECK 0 PT#USE_CLK1 1 PT#USE_CLK0 1 PT#PRIMARY_CLK_COMBO inclk0 PT#BANDWIDTH 1.000 PT#GLOCKED_COUNTER_EDIT_CHANGED 1 PT#PLL_FASTPLL_CHECK 0 PT#SPREAD_FREQ_UNIT KHz PT#PLL_AUTOPLL_CHECK 1 PT#LVDS_PHASE_SHIFT_UNIT2 deg PT#LVDS_PHASE_SHIFT_UNIT1 deg PT#OUTPUT_FREQ_MODE2 1 PT#LVDS_PHASE_SHIFT_UNIT0 deg PT#OUTPUT_FREQ_MODE1 1 PT#SWITCHOVER_FEATURE_ENABLED 0 PT#MIG_DEVICE_SPEED_GRADE Any PT#OUTPUT_FREQ_MODE0 1 PT#BANDWIDTH_FEATURE_ENABLED 1 PT#INCLK0_FREQ_UNIT_COMBO MHz PT#ZERO_DELAY_RADIO 0 PT#OUTPUT_FREQ2 0.00200000 PT#OUTPUT_FREQ1 5.00000000 PT#OUTPUT_FREQ0 100.00000000 PT#SHORT_SCAN_RADIO 0 PT#LVDS_MODE_DATA_RATE_DIRTY 0 PT#CUR_FBIN_CLK c0 PT#PLL_ADVANCED_PARAM_CHECK 0 PT#CLKBAD_SWITCHOVER_CHECK 0 PT#PHASE_SHIFT_STEP_ENABLED_CHECK 0 PT#DEVICE_SPEED_GRADE Any PT#PLL_FBMIMIC_CHECK 0 PT#LVDS_MODE_DATA_RATE {Not Available} PT#LOCKED_OUTPUT_CHECK 1 PT#SPREAD_PERCENT 0.500 PT#PHASE_SHIFT2 0.00000000 PT#PHASE_SHIFT1 0.00000000 PT#DIV_FACTOR2 1 PT#PHASE_SHIFT0 0.00000000 PT#DIV_FACTOR1 1 PT#DIV_FACTOR0 1 PT#CNX_NO_COMPENSATE_RADIO 0 PT#USE_CLKENA2 0 PT#USE_CLKENA1 0 PT#USE_CLKENA0 0 PT#CREATE_INCLK1_CHECK 0 PT#GLOCK_COUNTER_EDIT 1048575 PT#INCLK1_FREQ_UNIT_COMBO MHz PT#EFF_OUTPUT_FREQ_VALUE2 0.002000 PT#EFF_OUTPUT_FREQ_VALUE1 5.000000 PT#EFF_OUTPUT_FREQ_VALUE0 100.000000 PT#SPREAD_FREQ 50.000 PT#USE_MIL_SPEED_GRADE 0 PT#EXPLICIT_SWITCHOVER_COUNTER 0 PT#STICKY_CLK2 1 PT#STICKY_CLK1 1 PT#STICKY_CLK0 1 PT#EXT_FEEDBACK_RADIO 0 PT#MIRROR_CLK2 0 PT#MIRROR_CLK1 0 PT#SWITCHOVER_COUNT_EDIT 1 PT#MIRROR_CLK0 0 PT#SELF_RESET_LOCK_LOSS 0 PT#PLL_PFDENA_CHECK 0 PT#INT_FEEDBACK__MODE_RADIO 1 PT#INCLK1_FREQ_EDIT_CHANGED 1 PT#SYNTH_WRAPPER_GEN_POSTFIX 0 PT#CLKLOSS_CHECK 0 PT#PHASE_SHIFT_UNIT2 deg PT#PHASE_SHIFT_UNIT1 deg PT#PHASE_SHIFT_UNIT0 deg PT#BANDWIDTH_USE_AUTO 1 PT#HAS_MANUAL_SWITCHOVER 1 PT#MULT_FACTOR2 1 PT#MULT_FACTOR1 1 PT#MULT_FACTOR0 1 PT#SPREAD_USE 0 PT#GLOCKED_MODE_CHECK 0 PT#DUTY_CYCLE2 5.00000000 PT#SACN_INPUTS_CHECK 0 PT#DUTY_CYCLE1 50.00000000 PT#INTENDED_DEVICE_FAMILY {Cyclone IV E} PT#DUTY_CYCLE0 50.00000000 PT#PLL_TARGET_HARCOPY_CHECK 0 PT#INCLK1_FREQ_UNIT_CHANGED 1 PT#RECONFIG_FILE ALTPLL1486666040839923.mif PT#ACTIVECLK_CHECK 0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3353,7 +3353,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_INCLK_INTERFACE_CLOCK_RATE">
    <type>java.lang.Long</type>
-   <value>0</value>
+   <value>50000000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -3416,7 +3416,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRateKnown">
     <type>java.lang.Boolean</type>
-    <value>false</value>
+    <value>true</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -3424,7 +3424,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>java.lang.Long</type>
-    <value>0</value>
+    <value>50000000</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -3928,7 +3928,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>long</type>
-    <value>1152000</value>
+    <value>5000000</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -3982,6 +3982,24 @@ parameters are a RESULT of the module parameters. -->
     <width>1</width>
     <role>clk</role>
    </port>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>Framebuffer</moduleName>
+    <slaveName>clk2</slaveName>
+    <name>Framebuffer.clk2</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>clock_bridge_0</moduleName>
+    <slaveName>in_clk</slaveName>
+    <name>clock_bridge_0.in_clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>rst_controller_001</moduleName>
+    <slaveName>clk</slaveName>
+    <name>rst_controller_001.clk</name>
+   </clockDomainMember>
   </interface>
   <interface name="c2" kind="clock_source" version="16.1">
    <!-- The connection points exposed by a module instance for the
@@ -4172,11 +4190,11 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_CONTENTS_FILE</name>
-   <value>Raster_Laser_Projector_Framebuffer</value>
+   <value>james</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INSTANCE_ID</name>
@@ -4184,7 +4202,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NON_DEFAULT_INIT_FILE_ENABLED</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RAM_BLOCK_TYPE</name>
@@ -4196,7 +4214,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.SINGLE_CLOCK_OP</name>
-   <value>1</value>
+   <value>0</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.SIZE_MULTIPLE</name>
@@ -4236,7 +4254,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.MEM_INIT_FILENAME</name>
-   <value>Raster_Laser_Projector_Framebuffer</value>
+   <value>james</value>
   </assignment>
   <assignment>
    <name>postgeneration.simulation.init_file.param_name</name>
@@ -4304,7 +4322,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initMemContent">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4312,9 +4330,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>onchip_mem.hex</value>
+   <value>james.mif</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4322,7 +4340,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4368,7 +4386,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="singleClockOperation">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4376,7 +4394,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_singleClockOperation">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4400,9 +4418,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="useNonDefaultInitFile">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4410,7 +4428,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>false</visible>
    <valid>true</valid>
   </parameter>
@@ -4523,7 +4541,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>Raster_Laser_Projector_Framebuffer.hex</value>
+   <value>james.mif</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4537,6 +4555,51 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
+  <interface name="clk1" kind="clock_sink" version="16.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>false</isStart>
+   <port>
+    <name>clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
   <interface name="s1" kind="avalon_slave" version="16.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
@@ -4908,6 +4971,51 @@ parameters are a RESULT of the module parameters. -->
     <role>writedata</role>
    </port>
   </interface>
+  <interface name="reset1" kind="reset_sink" version="16.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clk1</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>DEASSERT</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>false</isStart>
+   <port>
+    <name>reset</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset</role>
+   </port>
+  </interface>
   <interface name="s2" kind="avalon_slave" version="16.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
@@ -4970,7 +5078,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedClock">
     <type>java.lang.String</type>
-    <value>clk1</value>
+    <value>clk2</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -4978,7 +5086,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedReset">
     <type>java.lang.String</type>
-    <value>reset1</value>
+    <value>reset2</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -5279,7 +5387,7 @@ parameters are a RESULT of the module parameters. -->
     <role>writedata</role>
    </port>
   </interface>
-  <interface name="clk1" kind="clock_sink" version="16.1">
+  <interface name="clk2" kind="clock_sink" version="16.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -5318,19 +5426,19 @@ parameters are a RESULT of the module parameters. -->
    <type>clock</type>
    <isStart>false</isStart>
    <port>
-    <name>clk</name>
+    <name>clk2</name>
     <direction>Input</direction>
     <width>1</width>
     <role>clk</role>
    </port>
   </interface>
-  <interface name="reset1" kind="reset_sink" version="16.1">
+  <interface name="reset2" kind="reset_sink" version="16.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
    <parameter name="associatedClock">
     <type>java.lang.String</type>
-    <value>clk1</value>
+    <value>clk2</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -5363,7 +5471,7 @@ parameters are a RESULT of the module parameters. -->
    <type>reset</type>
    <isStart>false</isStart>
    <port>
-    <name>reset</name>
+    <name>reset2</name>
     <direction>Input</direction>
     <width>1</width>
     <role>reset</role>
@@ -5375,7 +5483,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492404323</value>
+   <value>1492815367</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5420,7 +5528,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_CLOCK_RATE">
    <type>java.lang.Long</type>
-   <value>0</value>
+   <value>50000000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5430,7 +5538,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_CLOCK_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>3</value>
+   <value>4</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5440,7 +5548,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_RESET_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>3</value>
+   <value>4</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -6001,7 +6109,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="inputClockFrequency">
    <type>long</type>
-   <value>0</value>
+   <value>50000000</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -10393,7 +10501,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="clockFrequencyKnown">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -10475,7 +10583,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRateKnown">
     <type>java.lang.Boolean</type>
-    <value>false</value>
+    <value>true</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -10483,7 +10591,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>java.lang.Long</type>
-    <value>0</value>
+    <value>50000000</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -10561,7 +10669,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>long</type>
-    <value>0</value>
+    <value>50000000</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -10569,7 +10677,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRateKnown">
     <type>boolean</type>
-    <value>false</value>
+    <value>true</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -10677,9 +10785,9 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>CLK_10mhz</moduleName>
+    <moduleName>CLK_100k</moduleName>
     <slaveName>inclk_interface</slaveName>
-    <name>CLK_10mhz.inclk_interface</name>
+    <name>CLK_100k.inclk_interface</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -10757,6 +10865,186 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
+   name="clock_bridge_0"
+   kind="altera_clock_bridge"
+   version="16.1"
+   path="clock_bridge_0">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="DERIVED_CLOCK_RATE">
+   <type>long</type>
+   <value>5000000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+   <sysinfo_type>CLOCK_RATE</sysinfo_type>
+   <sysinfo_arg>in_clk</sysinfo_arg>
+  </parameter>
+  <parameter name="EXPLICIT_CLOCK_RATE">
+   <type>long</type>
+   <value>5000000</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="NUM_CLOCK_OUTPUTS">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="in_clk" kind="clock_sink" version="16.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRateKnown">
+    <type>java.lang.Boolean</type>
+    <value>true</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRate">
+    <type>java.lang.Long</type>
+    <value>5000000</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>false</isStart>
+   <port>
+    <name>in_clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+  <interface name="out_clk" kind="clock_source" version="16.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedDirectClock">
+    <type>java.lang.String</type>
+    <value>in_clk</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRate">
+    <type>long</type>
+    <value>5000000</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockRateKnown">
+    <type>boolean</type>
+    <value>true</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>true</isStart>
+   <port>
+    <name>out_clk</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+ </module>
+ <module
    name="mm_interconnect_0"
    kind="altera_mm_interconnect"
    version="16.1"
@@ -10773,7 +11061,7 @@ the requested settings for a module instance. -->
   </assignment>
   <parameter name="COMPOSE_CONTENTS">
    <type>java.lang.String</type>
-   <value>add_instance {Video_In_video_in_dma_translator} {altera_merlin_master_translator};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ADDRESS_W} {32};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_DATA_W} {8};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BYTEENABLE_W} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_ADDRESS_W} {32};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_BURSTCOUNT_W} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_READLATENCY} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READDATA} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READ} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WRITE} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_ADDRESS} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_CLKEN} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_LOCK} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_SYMBOLS_PER_WORD} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ADDRESS_SYMBOLS} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {64};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {SYNC_RESET} {0};add_instance {Framebuffer_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ADDRESS_W} {19};set_instance_parameter_value {Framebuffer_s1_translator} {AV_DATA_W} {8};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_DATA_W} {8};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BYTEENABLE_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_BYTEENABLE_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_ADDRESS_W} {32};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_BURSTCOUNT_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_READLATENCY} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READ} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_AV_CLKEN} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_SYMBOLS_PER_WORD} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {Framebuffer_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {Video_In_reset_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {Video_In_reset_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {Video_In_reset_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {Video_In_reset_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {Video_In_reset_reset_bridge} {USE_RESET_REQUEST} {0};add_instance {Framebuffer_reset1_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {USE_RESET_REQUEST} {0};add_instance {clk_0_clk_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {clk_0_clk_clock_bridge} {EXPLICIT_CLOCK_RATE} {0};set_instance_parameter_value {clk_0_clk_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {Video_In_video_in_dma_translator.avalon_universal_master_0} {Framebuffer_s1_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {Video_In_video_in_dma_translator.avalon_universal_master_0/Framebuffer_s1_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {Video_In_video_in_dma_translator.avalon_universal_master_0/Framebuffer_s1_translator.avalon_universal_slave_0} {baseAddress} {0x09000000};set_connection_parameter_value {Video_In_video_in_dma_translator.avalon_universal_master_0/Framebuffer_s1_translator.avalon_universal_slave_0} {defaultConnection} {false};add_connection {Framebuffer_reset1_reset_bridge.out_reset} {Video_In_video_in_dma_translator.reset} {reset};add_connection {Framebuffer_reset1_reset_bridge.out_reset} {Framebuffer_s1_translator.reset} {reset};add_connection {clk_0_clk_clock_bridge.out_clk} {Video_In_video_in_dma_translator.clk} {clock};add_connection {clk_0_clk_clock_bridge.out_clk} {Framebuffer_s1_translator.clk} {clock};add_connection {clk_0_clk_clock_bridge.out_clk} {Video_In_reset_reset_bridge.clk} {clock};add_connection {clk_0_clk_clock_bridge.out_clk} {Framebuffer_reset1_reset_bridge.clk} {clock};add_interface {clk_0_clk} {clock} {slave};set_interface_property {clk_0_clk} {EXPORT_OF} {clk_0_clk_clock_bridge.in_clk};add_interface {Framebuffer_reset1_reset_bridge_in_reset} {reset} {slave};set_interface_property {Framebuffer_reset1_reset_bridge_in_reset} {EXPORT_OF} {Framebuffer_reset1_reset_bridge.in_reset};add_interface {Video_In_reset_reset_bridge_in_reset} {reset} {slave};set_interface_property {Video_In_reset_reset_bridge_in_reset} {EXPORT_OF} {Video_In_reset_reset_bridge.in_reset};add_interface {Video_In_video_in_dma} {avalon} {slave};set_interface_property {Video_In_video_in_dma} {EXPORT_OF} {Video_In_video_in_dma_translator.avalon_anti_master_0};add_interface {Framebuffer_s1} {avalon} {master};set_interface_property {Framebuffer_s1} {EXPORT_OF} {Framebuffer_s1_translator.avalon_anti_slave_0};set_module_assignment {interconnect_id.Framebuffer.s1} {0};set_module_assignment {interconnect_id.Video_In.video_in_dma} {0};</value>
+   <value>add_instance {Video_In_video_in_dma_translator} {altera_merlin_master_translator};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ADDRESS_W} {32};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_DATA_W} {8};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BYTEENABLE_W} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_ADDRESS_W} {32};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_BURSTCOUNT_W} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_READLATENCY} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_READ_WAIT} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READDATA} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READ} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WRITE} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_CHIPSELECT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_ADDRESS} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_CLKEN} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WAITREQUEST} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_LOCK} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_SYMBOLS_PER_WORD} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ADDRESS_SYMBOLS} {1};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {64};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {Video_In_video_in_dma_translator} {SYNC_RESET} {0};add_instance {Framebuffer_s1_translator} {altera_merlin_slave_translator};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ADDRESS_W} {19};set_instance_parameter_value {Framebuffer_s1_translator} {AV_DATA_W} {8};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_DATA_W} {8};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BURSTCOUNT_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BYTEENABLE_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_BYTEENABLE_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_ADDRESS_W} {32};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_BURSTCOUNT_W} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_READLATENCY} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_SETUP_WAIT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_WRITE_WAIT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_READ_WAIT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_DATA_HOLD} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_TIMING_UNITS} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READDATA} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITEDATA} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READ} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITE} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BEGINBURSTTRANSFER} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BEGINTRANSFER} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BYTEENABLE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_CHIPSELECT} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_ADDRESS} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_BURSTCOUNT} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READDATAVALID} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WAITREQUEST} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITEBYTEENABLE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_LOCK} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_AV_CLKEN} {1};set_instance_parameter_value {Framebuffer_s1_translator} {USE_UAV_CLKEN} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_OUTPUTENABLE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_DEBUGACCESS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_READRESPONSE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {USE_WRITERESPONSE} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_SYMBOLS_PER_WORD} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ADDRESS_SYMBOLS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BURSTCOUNT_SYMBOLS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_CONSTANT_BURST_BEHAVIOR} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_REQUIRE_UNALIGNED_ADDRESSES} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_LINEWRAPBURSTS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_MAX_PENDING_READ_TRANSACTIONS} {1};set_instance_parameter_value {Framebuffer_s1_translator} {AV_MAX_PENDING_WRITE_TRANSACTIONS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BURSTBOUNDARIES} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_INTERLEAVEBURSTS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_BITS_PER_SYMBOL} {8};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ISBIGENDIAN} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ADDRESSGROUP} {0};set_instance_parameter_value {Framebuffer_s1_translator} {UAV_ADDRESSGROUP} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_REGISTEROUTGOINGSIGNALS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_REGISTERINCOMINGSIGNALS} {0};set_instance_parameter_value {Framebuffer_s1_translator} {AV_ALWAYSBURSTMAXBURST} {0};set_instance_parameter_value {Framebuffer_s1_translator} {CHIPSELECT_THROUGH_READLATENCY} {0};add_instance {Video_In_reset_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {Video_In_reset_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {Video_In_reset_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {Video_In_reset_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {Video_In_reset_reset_bridge} {USE_RESET_REQUEST} {0};add_instance {Framebuffer_reset1_reset_bridge} {altera_reset_bridge};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {ACTIVE_LOW_RESET} {0};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {SYNCHRONOUS_EDGES} {deassert};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {NUM_RESET_OUTPUTS} {1};set_instance_parameter_value {Framebuffer_reset1_reset_bridge} {USE_RESET_REQUEST} {0};add_instance {clk_0_clk_clock_bridge} {altera_clock_bridge};set_instance_parameter_value {clk_0_clk_clock_bridge} {EXPLICIT_CLOCK_RATE} {50000000};set_instance_parameter_value {clk_0_clk_clock_bridge} {NUM_CLOCK_OUTPUTS} {1};add_connection {Video_In_video_in_dma_translator.avalon_universal_master_0} {Framebuffer_s1_translator.avalon_universal_slave_0} {avalon};set_connection_parameter_value {Video_In_video_in_dma_translator.avalon_universal_master_0/Framebuffer_s1_translator.avalon_universal_slave_0} {arbitrationPriority} {1};set_connection_parameter_value {Video_In_video_in_dma_translator.avalon_universal_master_0/Framebuffer_s1_translator.avalon_universal_slave_0} {baseAddress} {0x09000000};set_connection_parameter_value {Video_In_video_in_dma_translator.avalon_universal_master_0/Framebuffer_s1_translator.avalon_universal_slave_0} {defaultConnection} {false};add_connection {Framebuffer_reset1_reset_bridge.out_reset} {Video_In_video_in_dma_translator.reset} {reset};add_connection {Framebuffer_reset1_reset_bridge.out_reset} {Framebuffer_s1_translator.reset} {reset};add_connection {clk_0_clk_clock_bridge.out_clk} {Video_In_video_in_dma_translator.clk} {clock};add_connection {clk_0_clk_clock_bridge.out_clk} {Framebuffer_s1_translator.clk} {clock};add_connection {clk_0_clk_clock_bridge.out_clk} {Video_In_reset_reset_bridge.clk} {clock};add_connection {clk_0_clk_clock_bridge.out_clk} {Framebuffer_reset1_reset_bridge.clk} {clock};add_interface {clk_0_clk} {clock} {slave};set_interface_property {clk_0_clk} {EXPORT_OF} {clk_0_clk_clock_bridge.in_clk};add_interface {Framebuffer_reset1_reset_bridge_in_reset} {reset} {slave};set_interface_property {Framebuffer_reset1_reset_bridge_in_reset} {EXPORT_OF} {Framebuffer_reset1_reset_bridge.in_reset};add_interface {Video_In_reset_reset_bridge_in_reset} {reset} {slave};set_interface_property {Video_In_reset_reset_bridge_in_reset} {EXPORT_OF} {Video_In_reset_reset_bridge.in_reset};add_interface {Video_In_video_in_dma} {avalon} {slave};set_interface_property {Video_In_video_in_dma} {EXPORT_OF} {Video_In_video_in_dma_translator.avalon_anti_master_0};add_interface {Framebuffer_s1} {avalon} {master};set_interface_property {Framebuffer_s1} {EXPORT_OF} {Framebuffer_s1_translator.avalon_anti_slave_0};set_module_assignment {interconnect_id.Framebuffer.s1} {0};set_module_assignment {interconnect_id.Video_In.video_in_dma} {0};</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -12010,6 +12298,381 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
+ <module
+   name="rst_controller_001"
+   kind="altera_reset_controller"
+   version="16.1"
+   path="rst_controller_001">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="NUM_RESET_INPUTS">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="OUTPUT_RESET_SYNC_EDGES">
+   <type>java.lang.String</type>
+   <value>deassert</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="SYNC_DEPTH">
+   <type>int</type>
+   <value>2</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="RESET_REQUEST_PRESENT">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="RESET_REQ_WAIT_TIME">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MIN_RST_ASSERTION_TIME">
+   <type>int</type>
+   <value>3</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="RESET_REQ_EARLY_DSRT_TIME">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN0">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN1">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN2">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN3">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN4">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN5">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN6">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN7">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN8">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN9">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN10">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN11">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN12">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN13">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN14">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN15">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_INPUT">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="ADAPT_RESET_REQUEST">
+   <type>int</type>
+   <value>0</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="reset_in0" kind="reset_sink" version="16.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>NONE</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>false</isStart>
+   <port>
+    <name>reset_in0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset</role>
+   </port>
+  </interface>
+  <interface name="clk" kind="clock_sink" version="16.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>false</isStart>
+   <port>
+    <name>clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+  <interface name="reset_out" kind="reset_source" version="16.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clk</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedDirectReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedResetSinks">
+    <type>[Ljava.lang.String;</type>
+    <value>reset_in0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>DEASSERT</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>true</isStart>
+   <port>
+    <name>reset_out</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>reset</role>
+   </port>
+  </interface>
+ </module>
  <connection
    name="Video_In_video_clipper_0.avalon_clipper_source/Video_In_video_scaler_0.avalon_scaler_sink"
    kind="avalon_streaming"
@@ -12524,6 +13187,60 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
+   name="Clock_Generators.c1/Framebuffer.clk2"
+   kind="clock"
+   version="16.1"
+   start="Clock_Generators.c1"
+   end="Framebuffer.clk2">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>Clock_Generators</startModule>
+  <startConnectionPoint>c1</startConnectionPoint>
+  <endModule>Framebuffer</endModule>
+  <endConnectionPoint>clk2</endConnectionPoint>
+ </connection>
+ <connection
+   name="Clock_Generators.c1/clock_bridge_0.in_clk"
+   kind="clock"
+   version="16.1"
+   start="Clock_Generators.c1"
+   end="clock_bridge_0.in_clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>Clock_Generators</startModule>
+  <startConnectionPoint>c1</startConnectionPoint>
+  <endModule>clock_bridge_0</endModule>
+  <endConnectionPoint>in_clk</endConnectionPoint>
+ </connection>
+ <connection
    name="clk_0.clk/Video_In_clk_0.clk_in"
    kind="clock"
    version="16.1"
@@ -12605,11 +13322,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>inclk_interface</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/CLK_10mhz.inclk_interface"
+   name="clk_0.clk/CLK_100k.inclk_interface"
    kind="clock"
    version="16.1"
    start="clk_0.clk"
-   end="CLK_10mhz.inclk_interface">
+   end="CLK_100k.inclk_interface">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -12628,7 +13345,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>CLK_10mhz</endModule>
+  <endModule>CLK_100k</endModule>
   <endConnectionPoint>inclk_interface</endConnectionPoint>
  </connection>
  <connection
@@ -12788,11 +13505,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller.reset_out/CLK_10mhz.inclk_interface_reset"
+   name="rst_controller.reset_out/CLK_100k.inclk_interface_reset"
    kind="reset"
    version="16.1"
    start="rst_controller.reset_out"
-   end="CLK_10mhz.inclk_interface_reset">
+   end="CLK_100k.inclk_interface_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -12811,7 +13528,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>rst_controller</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
-  <endModule>CLK_10mhz</endModule>
+  <endModule>CLK_100k</endModule>
   <endConnectionPoint>inclk_interface_reset</endConnectionPoint>
  </connection>
  <connection
@@ -12976,6 +13693,87 @@ parameters are a RESULT of the module parameters. -->
   <endModule>rst_controller</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
+ <connection
+   name="rst_controller_001.reset_out/Framebuffer.reset2"
+   kind="reset"
+   version="16.1"
+   start="rst_controller_001.reset_out"
+   end="Framebuffer.reset2">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>rst_controller_001</startModule>
+  <startConnectionPoint>reset_out</startConnectionPoint>
+  <endModule>Framebuffer</endModule>
+  <endConnectionPoint>reset2</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk_reset/rst_controller_001.reset_in0"
+   kind="reset"
+   version="16.1"
+   start="clk_0.clk_reset"
+   end="rst_controller_001.reset_in0">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk_reset</startConnectionPoint>
+  <endModule>rst_controller_001</endModule>
+  <endConnectionPoint>reset_in0</endConnectionPoint>
+ </connection>
+ <connection
+   name="Clock_Generators.c1/rst_controller_001.clk"
+   kind="clock"
+   version="16.1"
+   start="Clock_Generators.c1"
+   end="rst_controller_001.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>Clock_Generators</startModule>
+  <startConnectionPoint>c1</startConnectionPoint>
+  <endModule>rst_controller_001</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
  <plugin>
   <instanceCount>2</instanceCount>
   <name>altpll</name>
@@ -12985,7 +13783,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>12</instanceCount>
+  <instanceCount>15</instanceCount>
   <name>clock_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -12993,7 +13791,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>13</instanceCount>
+  <instanceCount>15</instanceCount>
   <name>reset_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -13009,7 +13807,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>4</instanceCount>
+  <instanceCount>5</instanceCount>
   <name>clock_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -13162,6 +13960,14 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
+  <name>altera_clock_bridge</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IModule</subtype>
+  <displayName>Clock Bridge</displayName>
+  <version>16.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>1</instanceCount>
   <name>altera_mm_interconnect</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
@@ -13169,7 +13975,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>1</instanceCount>
+  <instanceCount>2</instanceCount>
   <name>altera_reset_controller</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
@@ -13177,7 +13983,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>1</instanceCount>
+  <instanceCount>2</instanceCount>
   <name>reset_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -13193,7 +13999,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>11</instanceCount>
+  <instanceCount>13</instanceCount>
   <name>clock</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -13217,7 +14023,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>2</instanceCount>
+  <instanceCount>3</instanceCount>
   <name>clock</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -13225,7 +14031,7 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <plugin>
-  <instanceCount>6</instanceCount>
+  <instanceCount>8</instanceCount>
   <name>reset</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -13233,5 +14039,5 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <reportVersion>16.1 203</reportVersion>
- <uniqueIdentifier>742F689A22F20000015B7A3AC88A</uniqueIdentifier>
+ <uniqueIdentifier>742F689A22F20000015B92BAD2D8</uniqueIdentifier>
 </EnsembleReport>
