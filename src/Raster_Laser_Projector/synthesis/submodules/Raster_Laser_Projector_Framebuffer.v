@@ -44,7 +44,7 @@ module Raster_Laser_Projector_Framebuffer (
                                           )
 ;
 
-  parameter INIT_FILE = "bruce.mif";
+  parameter INIT_FILE = "james.mif";
 
 
   output  [  7: 0] readdata;

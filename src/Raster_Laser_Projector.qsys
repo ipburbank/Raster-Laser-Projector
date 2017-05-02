@@ -483,7 +483,7 @@
   <parameter name="enPRInitMode" value="false" />
   <parameter name="enableDiffWidth" value="false" />
   <parameter name="initMemContent" value="true" />
-  <parameter name="initializationFileName" value="bruce.mif" />
+  <parameter name="initializationFileName" value="james.mif" />
   <parameter name="instanceID" value="NONE" />
   <parameter name="memorySize" value="307200" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />

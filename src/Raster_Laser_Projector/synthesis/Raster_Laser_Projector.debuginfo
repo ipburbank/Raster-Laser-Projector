@@ -5,7 +5,7 @@
  version="16.1"
  fabric="QSYS">
  <!-- Format version 16.1 203 (Future versions may contain additional information.) -->
- <!-- 2017.04.18.21:22:25 -->
+ <!-- 2017.04.21.18:56:13 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -57,7 +57,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1492564941</value>
+  <value>1492815367</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -4190,7 +4190,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_CONTENTS_FILE</name>
-   <value>bruce</value>
+   <value>james</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
@@ -4254,7 +4254,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.memoryInfo.MEM_INIT_FILENAME</name>
-   <value>bruce</value>
+   <value>james</value>
   </assignment>
   <assignment>
    <name>postgeneration.simulation.init_file.param_name</name>
@@ -4330,7 +4330,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>bruce.mif</value>
+   <value>james.mif</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4541,7 +4541,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>bruce.mif</value>
+   <value>james.mif</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5483,7 +5483,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1492564941</value>
+   <value>1492815367</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14039,5 +14039,5 @@ parameters are a RESULT of the module parameters. -->
   <version>16.1</version>
  </plugin>
  <reportVersion>16.1 203</reportVersion>
- <uniqueIdentifier>742F689A22F20000015B83CD9AC5</uniqueIdentifier>
+ <uniqueIdentifier>742F689A22F20000015B92BAD2D8</uniqueIdentifier>
 </EnsembleReport>
